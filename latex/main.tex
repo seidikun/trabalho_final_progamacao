@@ -1,53 +1,112 @@
-\input{preambulo}
-\makeindex
-\usepackage{nomencl}
-\makenomenclature
-\usepackage{float}
-\usepackage{hyperref}
+
+
+\documentclass[conference,compsoc]{IEEEtran}
+
+
+\usepackage{graphicx}
 \usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{url}
+\usepackage{multirow}
+\usepackage{dcolumn}
+\usepackage{subfig}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{siunitx}
+\usepackage{subfig}
+
+
+\ifCLASSOPTIONcompsoc
+  % IEEE Computer Society needs nocompress option
+  % requires cite.sty v4.0 or later (November 2003)
+  \usepackage[nocompress]{cite}
+\else
+  % normal IEEE
+  \usepackage{cite}
+\fi
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
 
 \begin{document}
-% Retira espaço extra obsoleto entre as frases.
-\frenchspacing
-% ---- ELEMENTOS PRÉ-TEXTUAIS ----
-\pretextual
+%
 
-\pagenumbering{roman}\include{pretextual/capa}
+\title{Aplicação de Modelod e Rede Neural Convolucional EEGNet em Dados Eletroencéfalográficos de Imagética Motora}
 
-\setcounter{page}{2} \imprimirfolhaderosto* % Folha de rosto (o * indica que haverá ficha catalográfica) 
-{\color{white}\rule{\linewidth}{0.5mm} } 
 
-%\include{pretextual/fichacatalografica}
-%\include{pretextual/folhadeaprovacao}
-\include{pretextual/resumo}
-\include{pretextual/abstract} % --- RESUMOS (em portugu\^{e}s e ingl\^{e}s ---
-\include{pretextual/sumario}
-%\include{pretextual/dedicatoria}
-%\include{pretextual/agradecimentos}
-%\include{pretextual/epigrafe}
-\include{pretextual/listadeFiguras}
-%\include{pretextual/listadetabelas}
-\include{pretextual/listadeacronimoseabreviacoes}
+% author names and affiliations
+% use a multiple column layout for up to three different
+% affiliations
+\author{Seidi Y. Yamauti\\
+\IEEEauthorblockA{IIN-ELS \\
+Email: seidi.yamauti@edu.isd.org.br}
+}
 
-\pagenumbering{arabic} \textual % ---- ELEMENTOS TEXTUAIS ----
+% make the title area
+\maketitle
 
-\include{chapter/introduction}
-\include{chapter/cap1}
-\include{chapter/metodologia}
-\include{chapter/resultados}
+% As a general rule, do not put math, special symbols or citations
+% in the abstract
+\begin{abstract}
 
-\bookmarksetup{startatroot}%% Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz 
+O modelo de rede neural convolucional EEGNet foi testado com dados EEG de imagética motora adquiridos através da plataforma EEGBCI. Os resultados de classificação foram comparados com modelos consolidados xDAWN + RG e CSP + LDA, obtendo a mesma acurácia. O respositório deste estudo está disponível em: \url{https://github.com/seidikun/trabalho_final_progamacao}
 
-\include{chapter/conclusion}
-\include{chapter/cronograma}
-% ---- ELEMENTOS P\'{O}S-TEXTUAIS ----
-\postextual
+\end{abstract}
 
+% no keywords
+
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+
+\section{Introduction}
+
+Interfaces-Cérebro Máquina (ICMs) são uma solução em neuroengenharia que oferece comunicação e capacidades de controle de dispositivos eletromecânicos para pessoas com deficiências motoras severas. Estudos atuais têm utilizado interfaces de propósito-único e que não generalizam para mais que uma tarefa. O uso de aprendizado profundo (Deep Learning) oferece a possibilidade de desenvolvimento de algoritmos que consigam estabelecer um aprendizado que abranja diversas tarefas em um único modelo
+
+
+
+\section{Materiais e Métodos}
+
+\subsection{EEGNet}
+
+O modelo EEGNet é uma rede neural convolucional proposto em \cite{lawhern2018eegnet} e desenvolvido com 3 propriedades:
+
+\begin{enumerate}
+    \item Ser aplicável em diversos paradigmas de ICM 
+    \item Pode ser treinado com uma quantidade limitada de dados e 
+    \item Produz características fisiológicamente interpretáveis
+\end{enumerate}
+
+O modelo está disponível através da plataforma GitHub no link \url{https://github.com/vlawhern/arl-eegmodels} 
+
+\subsection{Dados EEGBCI}
+
+Uma plataforma para estudos de ICM para propósitos gerais foi desenvolvida em \cite{schalk2004bci2000}, sendo capaz de combinar diversos tipos de sinais cerebrais, métodos de processamento de sinais, dispositivos de saída e protocolos operacionais. Os dados utilizados no presente estudos foram extraídos através desta plataforma e estão disponíveis pelo banco de dados PhysioNet \cite{goldberger2000physiobank}
+
+\subsection{Algoritmos Consolidados de Classificação de Imagética Motora em dados EEG}
+
+Para efeito de comparação com o modelo EEGNet, dois algoritmos comumente utilizados para classificação de imagética motora em EEG foram utilizados e suas respectivas acurácias extraídas: o modelo de filtro xDAWN com aplicação de geometria riemanniana é proposta em e obteve a competição Kaggle BCI \url{http://github.com/alexandrebarachant/bci-challenge-ner-2015} para detecção de potenciais erros de aquisição de dados em uma tarefa de soletramento usando o paradigma P300 em ICM. Já o modelo CSP + LDA \cite{koles1991quantitative} é comumente utilizado para classificação paradigmas de
+
+\section{Resultados}
+
+Electronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics Design. FigureElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics Design.
+
+
+Electronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics Design
+
+\section{Discussão}
+
+Dshfuigbuionaw
+
+\section{Conclusion}
+
+ConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusion
+
+\bibliographystyle{IEEEtran}
 \bibliography{references}
-%\include{postextuais/apendice}
-%\begin{anexosenv} \partanexos \input{postextuais/anexo1.tex} \end{anexosenv} % Inicia anexos - opcional
 
-% ---- INDICE REMISSIVO ----
-\printindex
+\end{document}
 
-\end{document} 
