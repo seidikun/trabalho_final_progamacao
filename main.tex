@@ -1,0 +1,53 @@
+\input{preambulo}
+\makeindex
+\usepackage{nomencl}
+\makenomenclature
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{amsmath}
+
+\begin{document}
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing
+% ---- ELEMENTOS PRÉ-TEXTUAIS ----
+\pretextual
+
+\pagenumbering{roman}\include{pretextual/capa}
+
+\setcounter{page}{2} \imprimirfolhaderosto* % Folha de rosto (o * indica que haverá ficha catalográfica) 
+{\color{white}\rule{\linewidth}{0.5mm} } 
+
+%\include{pretextual/fichacatalografica}
+%\include{pretextual/folhadeaprovacao}
+\include{pretextual/resumo}
+\include{pretextual/abstract} % --- RESUMOS (em portugu\^{e}s e ingl\^{e}s ---
+\include{pretextual/sumario}
+%\include{pretextual/dedicatoria}
+%\include{pretextual/agradecimentos}
+%\include{pretextual/epigrafe}
+\include{pretextual/listadeFiguras}
+%\include{pretextual/listadetabelas}
+\include{pretextual/listadeacronimoseabreviacoes}
+
+\pagenumbering{arabic} \textual % ---- ELEMENTOS TEXTUAIS ----
+
+\include{chapter/introduction}
+\include{chapter/cap1}
+\include{chapter/metodologia}
+\include{chapter/resultados}
+
+\bookmarksetup{startatroot}%% Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz 
+
+\include{chapter/conclusion}
+\include{chapter/cronograma}
+% ---- ELEMENTOS P\'{O}S-TEXTUAIS ----
+\postextual
+
+\bibliography{references}
+%\include{postextuais/apendice}
+%\begin{anexosenv} \partanexos \input{postextuais/anexo1.tex} \end{anexosenv} % Inicia anexos - opcional
+
+% ---- INDICE REMISSIVO ----
+\printindex
+
+\end{document} 

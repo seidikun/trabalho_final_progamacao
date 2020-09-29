@@ -1,0 +1,98 @@
+%CUSTOMIZACAO DA NUMERACAO
+\renewcommand{\pretextual}{%
+  \aliaspagestyle{titlingpage}{plain}%mostrar num. na capa
+  \aliaspagestyle{chapter}{plain}% customizing chapter pagestyle
+  \pagestyle{plain}
+  \aliaspagestyle{cleared}{plain}% mostrar num. em pag. em branco, coloque plain, c.c. empty
+  \aliaspagestyle{part}{empty}
+}
+
+% CUSTOMIZACA DA CAPA
+\renewcommand{\imprimircapa}{%
+  \begin{capa}%
+
+    %\vspace*{1cm}
+%    \begin{minipage}{\textwidth}
+    \centering
+	\includegraphics[width=6cm]{isd.pdf}
+    %\end{minipage}
+    %\hspace*{\fill}  
+    
+    \vspace{2cm}  
+	%\begin{minipage}{.62\textwidth}
+	\centering	
+	{\ABNTEXchapterfont\large\imprimirautor}	
+%	\end{minipage}		
+    	\center
+
+    \vfill
+    {\ABNTEXchapterfont\bfseries\LARGE\imprimirtitulo}
+    \vfill
+
+    \large\imprimirlocal
+
+    \large\imprimirdata
+
+    \vspace*{1cm}
+  \end{capa}
+}
+
+
+%CUSTOMIZACAO DA FOLHA DE ROSTO
+\makeatletter
+
+\renewcommand{\folhaderostocontent}{
+
+\begin{minipage}{.3\textwidth}
+\hspace{-1.5cm}
+\includegraphics[width=6cm]{iinels.eps}
+\end{minipage}
+\hspace*{\fill}
+\begin{minipage}{.55\textwidth}
+{\centering \imprimirinstituicao}
+\end{minipage}
+
+
+    \vspace*{1cm}
+
+\begin{center}
+{\ABNTEXchapterfont\large\imprimirautor}
+
+\vspace*{\fill}\vspace*{\fill}
+
+\ABNTEXchapterfont\bfseries\Large\imprimirtitulo
+\end{center}
+
+\vspace*{\fill}
+
+\abntex@ifnotempty{\imprimirpreambulo}{%
+  \hspace{.4\textwidth}
+  \begin{minipage}{.5\textwidth}
+  \SingleSpacing
+  \imprimirpreambulo
+  \end{minipage}%
+  \vspace*{\fill}
+}
+
+\vspace*{1cm}
+
+\noindent
+{\imprimirorientadorRotulo~\imprimirorientador\par}
+\noindent
+\abntex@ifnotempty{\imprimircoorientador}{%
+  {\imprimircoorientadorRotulo~\imprimircoorientador}%
+}%
+
+\vspace*{3cm}
+
+\begin{center}
+{\large\imprimirlocal}
+
+\par
+
+{\large\imprimirdata}
+\vspace*{1cm}
+\end{center}
+}
+
+\makeatother
