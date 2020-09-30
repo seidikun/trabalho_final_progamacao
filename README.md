@@ -1,3 +1,3 @@
-Trabalho final de PES001 - 
+Trabalho final de PES001 - FUndamentos de Programação e Desenvolvimento de Projetos Aplicados à NEuroengenharia
 
 Aplicação de Modelo de Rede Neural Convolucional EEGNet em Dados Eletroencéfalográficos de Imagética Motora
