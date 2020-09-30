@@ -64,8 +64,7 @@ O modelo de rede neural convolucional EEGNet foi testado com dados EEG de imagé
 
 \section{Introduction}
 
-Interfaces-Cérebro Máquina (ICMs) são uma solução em neuroengenharia que oferece comunicação e capacidades de controle de dispositivos eletromecânicos para pessoas com deficiências motoras severas. Estudos atuais têm utilizado interfaces de propósito-único e que não generalizam para mais que uma tarefa. O uso de aprendizado profundo (Deep Learning) oferece a possibilidade de desenvolvimento de algoritmos que consigam estabelecer um aprendizado que abranja diversas tarefas em um único modelo
-
+Interfaces-Cérebro Máquina (ICMs) são uma solução em neuroengenharia que oferece comunicação e capacidades de controle de dispositivos eletromecânicos para pessoas com deficiências motoras severas \cite{nicolas2012brain}. Estudos atuais têm utilizado interfaces de propósito-único e que não generalizam para mais que uma tarefa. Por outro lado, o uso de aprendizado profundo (Deep Learning) oferece a possibilidade de desenvolvimento de algoritmos que consigam estabelecer um aprendizado que abranja diversas tarefas em um único modelo \cite{lecun2015deep} e por isso é interessante que haja maior intersecção entre as áreas de ICM e aprendizado de máquina
 
 
 \section{Materiais e Métodos}
@@ -76,7 +75,7 @@ O modelo EEGNet é uma rede neural convolucional proposto em \cite{lawhern2018ee
 
 \begin{enumerate}
     \item Ser aplicável em diversos paradigmas de ICM 
-    \item Pode ser treinado com uma quantidade limitada de dados e 
+    \item Pode ser treinado com uma quantidade limitada de dados
     \item Produz características fisiológicamente interpretáveis
 \end{enumerate}
 
@@ -86,25 +85,28 @@ O modelo está disponível através da plataforma GitHub no link \url{https://gi
 
 Uma plataforma para estudos de ICM para propósitos gerais foi desenvolvida em \cite{schalk2004bci2000}, sendo capaz de combinar diversos tipos de sinais cerebrais, métodos de processamento de sinais, dispositivos de saída e protocolos operacionais. Os dados utilizados no presente estudos foram extraídos através desta plataforma e estão disponíveis pelo banco de dados PhysioNet \cite{goldberger2000physiobank}
 
+Os dados utilizados foram obtidos do sujeito com id 93, blocos 4,8 e 12, conforme a descrição dos dados para tentativas de imagética motora de mão direita e mão esquerda. O pré-processamento é realizado por meio de filtro digital passa-bandas por janelamento (firwin), com frequêcia mínima de corte 7Hz e frequência máxima de corte 30Hz. Os dados filtrados EEG são então janelados em torno dos eventos marcados, com 1 segundo antes e 4 segundos após a marcação no sinal, de onde se obtem 45 janelas, sendo 23 de imagética motora utilizando a mão esquerda e 22 de imagética motora utilizando a mão direita.
+
 \subsection{Algoritmos Consolidados de Classificação de Imagética Motora em dados EEG}
 
-Para efeito de comparação com o modelo EEGNet, dois algoritmos comumente utilizados para classificação de imagética motora em EEG foram utilizados e suas respectivas acurácias extraídas: o modelo de filtro xDAWN com aplicação de geometria riemanniana é proposta em e obteve a competição Kaggle BCI \url{http://github.com/alexandrebarachant/bci-challenge-ner-2015} para detecção de potenciais erros de aquisição de dados em uma tarefa de soletramento usando o paradigma P300 em ICM. Já o modelo CSP + LDA \cite{koles1991quantitative} é comumente utilizado para classificação paradigmas de
+Para efeito de comparação com o modelo EEGNet, dois algoritmos foram utilizados para classificação de imagética motora em EEG e suas respectivas acurácias extraídas: o modelo de filtro xDAWN com aplicação de geometria riemanniana é proposta em \cite{rivet2009xdawn} \cite{congedo2013new} e obteve o primeiro lugar na competição Kaggle BCI \url{http://github.com/alexandrebarachant/bci-challenge-ner-2015} para detecção de potenciais erros de aquisição de dados em uma tarefa de soletramento usando o paradigma P300 em ICM e foi utilizado para comparação com a EEGNet em \cite{lawhern2018eegnet}. Já o modelo CSP + LDA \cite{koles1991quantitative} é comumente utilizado para classificação de imagética motora em dados EEG
 
 \section{Resultados}
 
-Electronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics Design. FigureElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics Design.
+Os três modelos obtiveram acurácia de 100\% sobre os dados EEGBCI de imagética motora. O modelo EEGNet foi testado com diversas configurações, demonstrando instabilidade sobre os dados, o que será discutido na seção \ref{discussion}
 
+\begin{figure}[hbt!]
+ \centering
+ \includegraphics{cm_lda}
+\end{figure}
 
-Electronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics DesignElectronics Design
+\section{Discussão} \label{discussion}
+O modelo EEGNet apresenta a perspectiva de aprendizado de máquina profundo, de forma a substituir o modelo clássico que envolve especificação de extração de características e especificação de classificação. Nesta perspectiva, as duas fases estão contidas em um único modelo, possiblitando a atualização de parâmetros de forma genérica.
+No estudo com dados de imagética motora, a EEGNet obteve a mesma acurácia que modelos clássicos, evidenciado como o aprendizado de máquina profundo pode conter as especificações de generalidade e alta performance. Porém, foi notado que a acurácia de prediçao da EEGNet é sensível aos valores de parâmetros de definição, necessitando de um estudo mais aprofundado sobre sua explicabilidade
 
-\section{Discussão}
+\section{Conclusão}
 
-Dshfuigbuionaw
-
-\section{Conclusion}
-
-ConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusionConclusion
-
+O modelo EEGNet foi aplicado em dados EEG de imagética motora com os mesmos parâmetros citados em \cite{lawhern2018eegnet}, obtendo resultado comparável a modelos consolidados para a classificação do mesmo tipo de paradigma em ICM. Estudos futuros podem incluir a explicabilidade do modelo em relação a caraxterísticas fisiologicamente prováveis e estudo com dados mais estensos, envolvendo mais sujeitos e protocolos de treino diversos.
 \bibliographystyle{IEEEtran}
 \bibliography{references}
 
